@@ -1,0 +1,9 @@
+.c-heading {
+	display: inline-block;
+	&-white {
+		color: #fff;
+	}
+	&-border {
+		border-bottom: 3px solid #ccc;
+	}
+}

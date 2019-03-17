@@ -1,0 +1,16 @@
+// Navigation
+.c-nav {
+	display: flex;
+	width: 100%;
+}
+.c-nav_list {
+	list-style: none;
+	margin-right: 1rem;
+	&:last-child {
+		margin-right: 0;
+	}
+}
+.c-nav_list_link {
+	color: #fff;
+	text-decoration: none;
+}
