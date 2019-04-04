@@ -1,11 +1,13 @@
 .c-articles {
 	width: 100%;
 	display: flex;
+  flex-wrap: wrap;
 	justify-content: space-around;
 }
 .c-article_wrap {
-	width: 90%;
+	width: 30%;
 	margin-right: 5%;
+	margin-bottom: 5%;
 	&:nth-child(3n) {
 		margin-right: 0;
 	}

@@ -2,6 +2,9 @@ const gulp = require("gulp");
 const sass = require("gulp-sass");
 const postcss = require("gulp-postcss");
 const autoprefixer = require("gulp-autoprefixer");
+const uglify = require('gulp-uglify');
+const rename = require('gulp-rename');
+const plumber = require('gulp-plumber');
 const browserSync = require("browser-sync").create();
 
 const postcssOption = [autoprefixer];
@@ -23,6 +26,15 @@ gulp.task("sass", () => {
 		.pipe(gulp.dest("src/css"));
 })
 
+gulp.task("js", () => {
+	return gulp
+		.src("dev/**/*.js")
+		.pipe(plumber())
+		.pipe(uglify())
+		.pipe(rename({ extname: '.min.js' }))
+		.pipe(gulp.dest("src/"));
+})
+
 gulp.task("serve", done => {
 	browserSync.init(browserSyncOption);
 	done();
@@ -35,6 +47,7 @@ gulp.task("watch", (done) => {
 	}
 	gulp.watch("dev/**/*.html", gulp.series("html"));
 	gulp.watch("dev/**/*.scss", gulp.series("sass"));
+	gulp.watch("dev/**/*.js", gulp.series("js"));
 	gulp.watch("src/", browserReload);
 })
 
